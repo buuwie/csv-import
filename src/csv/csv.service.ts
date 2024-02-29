@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as csv from 'csv-parser';
 import { createReadStream } from 'fs';
 import { CreateProductDto } from 'src/dto/createProduct.dto';
-import { EditProductDto } from 'src/dto/editProduct.dto';
 import { CsvEntity } from 'src/entity/csv.entity';
 import { UserEntity } from 'src/entity/user.entity';
 import { Repository } from 'typeorm';

@@ -5,7 +5,6 @@ import * as csv from 'csv-parser';
 import { CsvService } from './csv.service';
 import { CreateProductDto } from 'src/dto/createProduct.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { EditProductDto } from 'src/dto/editProduct.dto';
 
 
 @Controller('file')
