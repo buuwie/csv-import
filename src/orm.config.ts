@@ -1,5 +1,6 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { CsvEntity } from "./entity/csv.entity";
+import { UserEntity } from "./entity/user.entity";
 export const config: TypeOrmModuleOptions = {
     type: 'postgres',
     port: 5432,
@@ -9,5 +10,5 @@ export const config: TypeOrmModuleOptions = {
     database: 'newapp',
     autoLoadEntities: true,
     synchronize: true,
-    entities: [CsvEntity],
+    entities: [CsvEntity, UserEntity],
 }
