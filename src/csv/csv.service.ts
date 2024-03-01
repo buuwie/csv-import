@@ -19,16 +19,13 @@ export class CsvService {
         createReadStream(filePath).pipe(csv()).on('data', (data) => results.push(data)).on('end', async () => {
             for (const result of results) {
                 const csvData = new CsvEntity();
-                csvData.firstName = result.FirstName;
-                csvData.lastName = result.LastName;
-                csvData.company = result.Company;
-                csvData.city = result.City;
-                csvData.country = result.Country;
-                csvData.phone = result.Phone;
-                csvData.email = result.Email;
+                csvData.name = result.name;
+                csvData.sku = result.sku;
+                csvData.price = result.price;
                 await this.repo.save(csvData);
             }
             console.log(results);
+            return results;
         });
     }
 
@@ -42,30 +39,21 @@ export class CsvService {
 
     async createData (CreateProductDto: CreateProductDto) {
         const product = new CsvEntity();
-        const { firstName, lastName, company, city, country, phone, email} = CreateProductDto;
-        product.firstName = firstName;
-        product.lastName = lastName;
-        product.company = company;
-        product.city = city;
-        product.country = country;
-        product.phone = phone;
-        product.email = email;
+        const { name, sku, price} = CreateProductDto;
+        product.name = name;
+        product.sku = sku;
+        product.price = price;
 
         this.repo.create(product);
         return await this.repo.save(product);
     }
 
-    async editData (id: number, firstName: string, lastName: string, company: string, city: string, country: string,
-        phone: string, email: string) {
+    async editData (id: number, name: string, sku: string, price: string) {
         const product = await this.repo.findOne({where: {id: id}});
         if (product) {
-            product.firstName = firstName;
-            product.lastName = lastName;
-            product.company = company;
-            product.city = city;
-            product.country = country;
-            product.phone = phone;
-            product.email = email;
+            product.name = name;
+            product.sku = sku;
+            product.price = price;
             return this.repo.save(product);
         }
         else throw new InternalServerErrorException('Product not found');

@@ -5,24 +5,12 @@ export class CsvEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    firstName: string;
+    @Column({nullable: true})
+    name: string;
 
-    @Column()
-    lastName: string;
-    
-    @Column()
-    company: string;
+    @Column({nullable: true})
+    sku: string;
 
-    @Column()
-    city: string;
-
-    @Column()
-    country: string;
-
-    @Column()
-    phone: string;
-    
-    @Column()
-    email: string;
+    @Column({nullable: true})
+    price: string;
 }

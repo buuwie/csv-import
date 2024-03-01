@@ -3,23 +3,11 @@ import { IsNotEmpty } from "class-validator"
 export class CreateProductDto {
 
     @IsNotEmpty()
-    firstName: string;
+    name: string;
 
     @IsNotEmpty()
-    lastName: string;
+    sku: string;
 
     @IsNotEmpty()
-    company: string;
-
-    @IsNotEmpty()
-    city: string;
-
-    @IsNotEmpty()
-    country: string;
-
-    @IsNotEmpty()
-    phone: string;
-    
-    @IsNotEmpty()
-    email: string;
+    price: string;
 }

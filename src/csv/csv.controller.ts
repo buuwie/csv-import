@@ -40,9 +40,8 @@ export class CsvController {
     }
 
     @Patch('data/edit/:id')
-    updateProduct (@Param('id') id: number, @Body('firstName') firstName: string, @Body('lastName') lastName: string, @Body('company') company: string,
-    @Body('city') city: string, @Body('country') country: string, @Body('phone') phone: string, @Body('email') email: string) {
-        return this.csvService.editData(id, firstName, lastName, company, city, country, phone, email);
+    updateProduct (@Param('id') id: number, @Body('name') name: string, @Body('sku') sku: string, @Body('price') price: string) {
+        return this.csvService.editData(id, name, sku, price);
     }
 
     @Delete('data/delete/:id')
