@@ -6,11 +6,31 @@ export class CsvEntity {
     id: number;
 
     @Column({nullable: true})
+    serial: string;
+
+    @Column({nullable: true})
     name: string;
 
     @Column({nullable: true})
-    sku: string;
+    category: string;
 
     @Column({nullable: true})
-    price: string;
+    size: string;
+
+    @Column({nullable: true})
+    description: string;
+
+    @Column({nullable: true})
+    status: productStatus;
+
+    @Column({nullable: true})
+    manufactureDate: string;
+
+    @Column({nullable: true})
+    warranty: string;
+}
+
+export enum productStatus {
+    AVAILABLE = 'AVAILABLE',
+    OUT_OF_STOCK = 'OUT_OF_STOCK'
 }

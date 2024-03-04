@@ -5,6 +5,9 @@ import * as csv from 'csv-parser';
 import { CsvService } from './csv.service';
 import { CreateProductDto } from 'src/dto/createProduct.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { productStatus } from 'src/entity/csv.entity';
+import { EditProductDto } from 'src/dto/editProduct.dto';
+import { ProductStatusValidationPipe } from 'src/productStatusValidation.pipe';
 
 
 @Controller('file')
@@ -34,17 +37,17 @@ export class CsvController {
         return this.csvService.getOneData(id);
     }
 
-    @Post('data/create') 
+    @Post('data') 
     createProduct (@Body(ValidationPipe) data: CreateProductDto) {
         return this.csvService.createData(data);
     }
 
-    @Patch('data/edit/:id')
-    updateProduct (@Param('id') id: number, @Body('name') name: string, @Body('sku') sku: string, @Body('price') price: string) {
-        return this.csvService.editData(id, name, sku, price);
+    @Patch('data/:id')
+    updateProduct (@Param('id') id: number, @Body(ValidationPipe) data: EditProductDto, @Body("status", ProductStatusValidationPipe) status: productStatus) {
+        return this.csvService.editData(id, data, status);
     }
 
-    @Delete('data/delete/:id')
+    @Delete('data/:id')
     deleteProduct(@Param('id') id: number) {
         return this.csvService.deleteData(id);
     }

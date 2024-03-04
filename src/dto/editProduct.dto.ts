@@ -1,26 +1,22 @@
 import { IsNotEmpty } from "class-validator"
 import { productStatus } from "src/entity/csv.entity";
 
-export class CreateProductDto {
+export class EditProductDto {
 
-    @IsNotEmpty()
     name: string;
 
-    @IsNotEmpty()
     serial: string;
 
-    @IsNotEmpty()
     category: string;
 
-    @IsNotEmpty()
     size: string;
 
-    @IsNotEmpty()
     description: string;
 
     @IsNotEmpty()
+    status: productStatus;
+
     manufactureDate: string;
 
-    @IsNotEmpty()
     warranty: string;
 }
